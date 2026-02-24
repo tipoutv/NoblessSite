@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BLD 444 - Artistes</title>
+
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#0b0b0b;
+    color:white;
+}
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 40px;
+    background:#000;
+    border-bottom:1px solid #222;
+}
+header h1{
+    color:#ff0000;
+    letter-spacing:3px;
+}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    transition:0.3s;
+}
+nav a:hover{
+    color:#ff0000;
+}
+.artists{
+    padding:60px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:35px;
+}
+.card{
+    position:relative;
+    background:#111;
+    border-radius:18px;
+    overflow:hidden;
+    text-align:center;
+    transition:0.4s;
+    cursor:pointer;
+}
+.card:hover{
+    transform:translateY(-10px) scale(1.03);
+    box-shadow:0 0 25px rgba(255,0,0,0.4);
+}
+.card img.artist{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+}
+.role-badge{
+    position:absolute;
+    top:10px;
+    right:10px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#000;
+    padding:6px;
+    box-shadow:0 0 10px rgba(255,0,0,0.6);
+}
+.card h3{
+    margin:15px 0 20px;
+    font-size:20px;
+    letter-spacing:1px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background: rgba(0,0,0,0.9);
+}
+.modal-content {
+    background: #111;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #ff0000;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+}
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #ff0000;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close:hover {
+    color: #fff;
+}
+.modal img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #ff0000;
+}
+.modal h2 {
+    margin: 15px 0;
+    color: #ff0000;
+}
+.social-links a {
+    display: inline-block;
+    margin: 10px 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    border: 2px solid #ff0000;
+    padding: 8px 15px;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+.social-links a:hover {
+    background: #ff0000;
+    color: #000;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>BLD 444</h1>
+    <nav>
+        <a href="index.html">Accueil</a>
+        <a href="artistes.html">Artistes</a>
+        <a href="merch.html">Merch</a>
+        <a href="evenements.html">Événements</a>
+    </nav>
+</header>
+
+<section class="artists">
+
+<!-- Exemple : PRESIDENT -->
+<div class="card reveal" onclick="openModal('brocent')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/575624289_17927183628117272_5208264616969024011_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=100&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=K01NSuDT8UoQ7kNvwFAJdKx&_nc_oc=Adm2to-CEvz44EsjH1SfxzybBr97w9abb35GH-42Uu8ZYrhCo5ZeXsSrg5Vtl9xHsQA&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afte2xF2ZbYi0J6Zzjkjnp8r3drAvc5WzC3CvJet29D2RQ&oe=69A18B33">
+<img class="role-badge" src="roles/president.png">
+<h3>Brocent</h3>
+</div>
+
+<!-- MANAGER -->
+<div class="card reveal" onclick="openModal('vsto')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/627104578_17957733486058330_2255228047564386777_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=110&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=2cQJfikrmGYQ7kNvwFVu2M5&_nc_oc=AdnRRIroEYmFL_1aMWjDopU-caUFBbHPMA7PJxTJFyzSNJvHjZTQGlJb4wITyh3WQ18&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfvwE47Oq4p0-0AVib2tFLqDYN01bxPozONXLf-unhhZYQ&oe=69A1A05C">
+<img class="role-badge" src="roles/manager.png">
+<h3>V$TO</h3>
+</div>
+
+<!-- PRODUCTION -->
+<div class="card reveal" onclick="openModal('knb')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/563599483_17998638812827827_8892073295454635289_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=110&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=ood42-e6ZlIQ7kNvwE_vAcG&_nc_oc=AdkEHBWtKcJtCkPdFWk4U49Sw8Tk6LXm6QLHnvyAcwD9vI-ZvacojRQ_FtEkbGLg6cU&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AftAqfUpBUh7l7kmcB5aHSmBc7KMiowvEADZ9ISCB1_ALQ&oe=69A1A3FE">
+<img class="role-badge" src="roles/production.png">
+<h3>knb</h3>
+</div>
+
+<!-- ASSISTANT Gérant -->
+<div class="card reveal" onclick="openModal('nk')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/629470153_17848296594674600_49058011769907240_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=111&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy41NTguQzMifQ%3D%3D&_nc_ohc=dUV9qrcDoRUQ7kNvwHkWTzt&_nc_oc=AdnqekIymMe0nRidptKyOIEEi2iLZo8RO6PH6CYAhl51azXo3Qr8hUrKlPvz3ZxNusY&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfstyGMIO9rlBft9YfLUoH7JDbnKDjG2qJIQvqgE3-3n3w&oe=69A170A6">
+<img class="role-badge" src="roles/assistant.png">
+<h3>NK</h3>
+</div>
+
+<!-- ADMIN -->
+<div class="card reveal" onclick="openModal('xtiloup')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/625866895_17961779184023669_4762443353936697444_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=110&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=w_rGZG-pPaAQ7kNvwFcHC8N&_nc_oc=Adl7O__eduv-nt8q-fxEfM1Rth0kiZeytcgMLcqdWrZdCaCm5dqng1bnx68mnP8f5JA&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AftxlLBGaveFrCraIxYczusrXNgMKmSl6-yf0HbKxOhZqQ&oe=69A18D7E">
+<img class="role-badge" src="roles/admin.png">
+<h3>Xtiloup</h3>
+</div>
+
+<!-- SECRETAIRE -->
+<div class="card reveal" onclick="openModal('rebelle')">
+<img class="artist" src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a05728e3eac007a6b6d19d9a6ff1d5f0~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=49119a1d&x-expires=1771988400&x-signature=2JlFPOwJRfu5SBgGL%2BfgQZM7iZw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my">
+<img class="role-badge" src="roles/secretaire.png">
+<h3>Rebelle</h3>
+</div>
+
+<!-- STYLISTE -->
+<div class="card reveal" onclick="openModal('jordan')">
+<img class="artist" src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/cc37a5d34487ae5bb3ea6fdf331ebaba~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=82194bcb&x-expires=1771992000&x-signature=rDW2k9fnRcKP6kMI9iuPivWedv8%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2">
+<img class="role-badge" src="roles/styliste.png">
+<h3>Jordan</h3>
+</div>
+
+<!-- MEMBRES -->
+<div class="card reveal" onclick="openModal('bleedead')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/575488626_17972387528966340_8501056006427376365_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=106&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=eVAPL04EQU8Q7kNvwEs6Uq1&_nc_oc=Adl9QTvNcY7Du_hU3npUZhRjxMbfQ2DTZ2fOO5nohYJRdBrGmHQ-LIqmcvUlWTF5MUI&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfvKM9PdyYcTLSD7gbe0pNwNOivkp9_FYLP4B3iLE5nK9A&oe=69A198F7">
+<img class="role-badge" src="roles/membre.png">
+<h3>Bleedead</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('valentin')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/590413691_18086190842072218_1193377073561699779_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=107&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=yuCOA1v9CgAQ7kNvwH_HUHA&_nc_oc=Adl63fZtK59Yj_TnpvQQHwSp5nHzugXk_37XyrIqmtYoSn3kqAnE_-a_tnbkttqHwDc&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfvXgnvbhajeq2sD2cpinN29TgrwOiZBka15cCwrApRIIQ&oe=69A1A103">
+<img class="role-badge" src="roles/membre.png">
+<h3>Valentin Woël</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('ricardo')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.2885-19/350854476_3466125750297694_6893787662850867691_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=105&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy45NTAuQzMifQ%3D%3D&_nc_ohc=e5iZRdU6iw0Q7kNvwH3_6Uy&_nc_oc=Adk__Mzq7mbTrS1beWsDwFQRs-XbF-zJ6qMrd81DC4sk9me-TgGCVNj0FzZF7SVtRSs&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&oh=00_AfufcAmn_yYYMPj2qmP6mbGVlDCjSAf3Qvs7ub_aPH9_JA&oe=69A18D47">
+<img class="role-badge" src="roles/membre.png">
+<h3>Ricardo Paniagua</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('napoly')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.2885-19/305165712_174380861811011_5956667517908368944_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=GShghHOOq5MQ7kNvwG5cfCZ&_nc_oc=AdneNd0Id8j6idYPk10bS4MZuo6v9xAwOeQ0Sy2GiDHpsL3euy-dj38QlR33nwiSlrg&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&oh=00_AftUV3oWhe8PEFGegCJ_jTlOU3TbZE7n7hEKs4YR5kqqSg&oe=69A182AE">
+<img class="role-badge" src="roles/membre.png">
+<h3>Napoly Officiel</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('skulboyz')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/589155269_18047158502694615_992162264054888564_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=111&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=X02Qt6UzjrAQ7kNvwH7gthQ&_nc_oc=Adk7QyNjHg_mWtvrf6Vh7LMRu4t1sXXHt70bWf3Wy9iISzIU2MD_nRem8zdycHiZutQ&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afu79BRZK8aYsc3khrutdC_UqUdc_ACiAh2m95l4YHc6Aw&oe=69A19C3C">
+<img class="role-badge" src="roles/membre.png">
+<h3>Skulboyz</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('benjamin')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/559062721_18000469460820071_5862655284805006035_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=103&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDA4LkMzIn0%3D&_nc_ohc=au_oKoYonxAQ7kNvwHAODne&_nc_oc=AdnAg15hWl7rPtmdY9hdWUNSbHNLmRzirw1a415cAaLOtwM1_rEgJcsv5aW60y-IhBE&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afvw1SwMX8NOBVNY_yMUq-k2cSJAFQk9S1wwY10WuQEaeA&oe=69A17362">
+<img class="role-badge" src="roles/membre.png">
+<h3>Benjamin Blondeau</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('booskap69')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/571838440_17849822940581651_5203723791195652978_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=102&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=SbrsGvbSEqoQ7kNvwHC0Gir&_nc_oc=AdmSmxOLTSksBYCbitu4CNoJG4Xnqy8HkFDJjECXeHdLf_Jt577DmdJ-thZD7hCjjZs&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afvtx2AHcMV7Ov_8Wa5Pf9k3HUsldV7SP7pT6gZE5nmiBQ&oe=69A1827F">
+<img class="role-badge" src="roles/membre.png">
+<h3>Booskap69</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('dayane')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/634211469_17997664103909065_1979310009905530588_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=102&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=kq0ndDTOKw8Q7kNvwG-TM4E&_nc_oc=AdlW9dATLMpbsngqm4Btbl7d2_9yqKKSN2IVnGPO4ZPL4_Jvu--7VQBSPI7-SD3yw3Y&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afs_1kHbRNv0szITOKOuhxkRQkRd1eKHICGkWtdlDiqq2g&oe=69A1A157">
+<img class="role-badge" src="roles/membre.png">
+<h3>Dayane</h3>
+</div>
+
+<div class="card reveal" onclick="openModal('batwin')">
+<img class="artist" src="https://scontent.cdninstagram.com/v/t51.82787-19/636886581_17867545398565310_4528530554154828050_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=104&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43NDYuQzMifQ%3D%3D&_nc_ohc=liQlj_eyKBIQ7kNvwFo7ZSj&_nc_oc=AdmkVaF34pBlze-rygwiBNIUufbuwSPIyTuwhmDiEKsAESKRbWTpYVm2FUeQ_O-9604&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AftguvS1PpTSDhzGYqCCL995ciYevyST0Rzu3C72dqtFgQ&oe=69A1948E">
+<img class="role-badge" src="roles/membre.png">
+<h3>Batwin QC</h3>
+</div>
+
+</section>
+
+<!-- ===== MODALS ===== -->
+<!-- Tu peux copier le modal de Xtiloup et changer id, photo, nom, role et liens pour chaque artiste -->
+<!-- PRESIDENT -->
+<div id="brocent" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('brocent')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/575624289_17927183628117272_5208264616969024011_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=100&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=K01NSuDT8UoQ7kNvwFAJdKx&_nc_oc=Adm2to-CEvz44EsjH1SfxzybBr97w9abb35GH-42Uu8ZYrhCo5ZeXsSrg5Vtl9xHsQA&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afte2xF2ZbYi0J6Zzjkjnp8r3drAvc5WzC3CvJet29D2RQ&oe=69A18B33">
+    <h2>Brocent</h2>
+    <p>Président</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- MANAGER -->
+<div id="vsto" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('vsto')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/627104578_17957733486058330_2255228047564386777_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=110&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=2cQJfikrmGYQ7kNvwFVu2M5&_nc_oc=AdnRRIroEYmFL_1aMWjDopU-caUFBbHPMA7PJxTJFyzSNJvHjZTQGlJb4wITyh3WQ18&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfvwE47Oq4p0-0AVib2tFLqDYN01bxPozONXLf-unhhZYQ&oe=69A1A05C">
+    <h2>V$TO</h2>
+    <p>Manager</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTION -->
+<div id="knb" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('knb')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/563599483_17998638812827827_8892073295454635289_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=110&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=ood42-e6ZlIQ7kNvwE_vAcG&_nc_oc=AdkEHBWtKcJtCkPdFWk4U49Sw8Tk6LXm6QLHnvyAcwD9vI-ZvacojRQ_FtEkbGLg6cU&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AftAqfUpBUh7l7kmcB5aHSmBc7KMiowvEADZ9ISCB1_ALQ&oe=69A1A3FE">
+    <h2>knb</h2>
+    <p>Production</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- ASSISTANT Gérant -->
+<div id="nk" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('nk')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/629470153_17848296594674600_49058011769907240_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=111&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy41NTguQzMifQ%3D%3D&_nc_ohc=dUV9qrcDoRUQ7kNvwHkWTzt&_nc_oc=AdnqekIymMe0nRidptKyOIEEi2iLZo8RO6PH6CYAhl51azXo3Qr8hUrKlPvz3ZxNusY&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfstyGMIO9rlBft9YfLUoH7JDbnKDjG2qJIQvqgE3-3n3w&oe=69A170A6">
+    <h2>NK</h2>
+    <p>Assistant Gérant</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="xtiloup" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('xtiloup')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/625866895_17961779184023669_4762443353936697444_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_cat=110&ccb=7-5&_nc_sid=f7ccc5&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=w_rGZG-pPaAQ7kNvwFcHC8N&_nc_oc=Adl7O__eduv-nt8q-fxEfM1Rth0kiZeytcgMLcqdWrZdCaCm5dqng1bnx68mnP8f5JA&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AftxlLBGaveFrCraIxYczusrXNgMKmSl6-yf0HbKxOhZqQ&oe=69A18D7E">
+    <h2>Xtiloup</h2>
+    <p>Admin</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- SECRETAIRE -->
+<div id="rebelle" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('rebelle')">&times;</span>
+    <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/a05728e3eac007a6b6d19d9a6ff1d5f0~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=49119a1d&x-expires=1771988400&x-signature=2JlFPOwJRfu5SBgGL%2BfgQZM7iZw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my">
+    <h2>Rebelle</h2>
+    <p>Secrétaire</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- STYLISTE -->
+<div id="jordan" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('jordan')">&times;</span>
+    <img src="https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/cc37a5d34487ae5bb3ea6fdf331ebaba~tplv-tiktokx-cropcenter:1080:1080.jpeg?dr=14579&refresh_token=82194bcb&x-expires=1771992000&x-signature=rDW2k9fnRcKP6kMI9iuPivWedv8%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=81f88b70&idc=my2">
+    <h2>Jordan</h2>
+    <p>Styliste</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- MEMBRES -->
+<div id="bleedead" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('bleedead')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/575488626_17972387528966340_8501056006427376365_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=106&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=eVAPL04EQU8Q7kNvwEs6Uq1&_nc_oc=Adl9QTvNcY7Du_hU3npUZhRjxMbfQ2DTZ2fOO5nohYJRdBrGmHQ-LIqmcvUlWTF5MUI&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfvKM9PdyYcTLSD7gbe0pNwNOivkp9_FYLP4B3iLE5nK9A&oe=69A198F7">
+    <h2>Bleedead</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="valentin" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('valentin')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/590413691_18086190842072218_1193377073561699779_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=107&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=yuCOA1v9CgAQ7kNvwH_HUHA&_nc_oc=Adl63fZtK59Yj_TnpvQQHwSp5nHzugXk_37XyrIqmtYoSn3kqAnE_-a_tnbkttqHwDc&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AfvXgnvbhajeq2sD2cpinN29TgrwOiZBka15cCwrApRIIQ&oe=69A1A103">
+    <h2>Valentin Woël</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="ricardo" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('ricardo')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.2885-19/350854476_3466125750297694_6893787662850867691_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=105&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy45NTAuQzMifQ%3D%3D&_nc_ohc=e5iZRdU6iw0Q7kNvwH3_6Uy&_nc_oc=Adk__Mzq7mbTrS1beWsDwFQRs-XbF-zJ6qMrd81DC4sk9me-TgGCVNj0FzZF7SVtRSs&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&oh=00_AfufcAmn_yYYMPj2qmP6mbGVlDCjSAf3Qvs7ub_aPH9_JA&oe=69A18D47">
+    <h2>Ricardo Paniagua</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="napoly" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('napoly')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.2885-19/305165712_174380861811011_5956667517908368944_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=108&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=GShghHOOq5MQ7kNvwG5cfCZ&_nc_oc=AdneNd0Id8j6idYPk10bS4MZuo6v9xAwOeQ0Sy2GiDHpsL3euy-dj38QlR33nwiSlrg&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&oh=00_AftUV3oWhe8PEFGegCJ_jTlOU3TbZE7n7hEKs4YR5kqqSg&oe=69A182AE">
+    <h2>Napoly Officiel</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="skulboyz" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('skulboyz')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/589155269_18047158502694615_992162264054888564_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=111&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=X02Qt6UzjrAQ7kNvwH7gthQ&_nc_oc=Adk7QyNjHg_mWtvrf6Vh7LMRu4t1sXXHt70bWf3Wy9iISzIU2MD_nRem8zdycHiZutQ&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afu79BRZK8aYsc3khrutdC_UqUdc_ACiAh2m95l4YHc6Aw&oe=69A19C3C">
+    <h2>Skulboyz</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="benjamin" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('benjamin')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/559062721_18000469460820071_5862655284805006035_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=103&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDA4LkMzIn0%3D&_nc_ohc=au_oKoYonxAQ7kNvwHAODne&_nc_oc=AdnAg15hWl7rPtmdY9hdWUNSbHNLmRzirw1a415cAaLOtwM1_rEgJcsv5aW60y-IhBE&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afvw1SwMX8NOBVNY_yMUq-k2cSJAFQk9S1wwY10WuQEaeA&oe=69A17362">
+    <h2>Benjamin Blondeau</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="booskap69" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('booskap69')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/571838440_17849822940581651_5203723791195652978_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=102&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=SbrsGvbSEqoQ7kNvwHC0Gir&_nc_oc=AdmSmxOLTSksBYCbitu4CNoJG4Xnqy8HkFDJjECXeHdLf_Jt577DmdJ-thZD7hCjjZs&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afvtx2AHcMV7Ov_8Wa5Pf9k3HUsldV7SP7pT6gZE5nmiBQ&oe=69A1827F">
+    <h2>Booskap69</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="dayane" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('dayane')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/634211469_17997664103909065_1979310009905530588_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=102&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy4xMDgwLkMzIn0%3D&_nc_ohc=kq0ndDTOKw8Q7kNvwG-TM4E&_nc_oc=AdlW9dATLMpbsngqm4Btbl7d2_9yqKKSN2IVnGPO4ZPL4_Jvu--7VQBSPI7-SD3yw3Y&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_Afs_1kHbRNv0szITOKOuhxkRQkRd1eKHICGkWtdlDiqq2g&oe=69A1A157">
+    <h2>Dayane</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<div id="batwin" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal('batwin')">&times;</span>
+    <img src="https://scontent.cdninstagram.com/v/t51.82787-19/636886581_17867545398565310_4528530554154828050_n.jpg?stp=dst-jpg_s206x206_tt6&_nc_cat=104&ccb=7-5&_nc_sid=bf7eb4&efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLnd3dy43NDYuQzMifQ%3D%3D&_nc_ohc=liQlj_eyKBIQ7kNvwFo7ZSj&_nc_oc=AdmkVaF34pBlze-rygwiBNIUufbuwSPIyTuwhmDiEKsAESKRbWTpYVm2FUeQ_O-9604&_nc_zt=24&_nc_ht=scontent.cdninstagram.com&_nc_gid=2AsQCY1wuOnRby_GoDXKTg&oh=00_AftguvS1PpTSDhzGYqCCL995ciYevyST0Rzu3C72dqtFgQ&oe=69A1948E">
+    <h2>Batwin QC</h2>
+    <p>Membre</p>
+    <div class="social-links">
+      <a href="https://www.youtube.com/" target="_blank">YouTube</a>
+      <a href="https://open.spotify.com/" target="_blank">Spotify</a>
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<!-- Répète pour chaque artiste comme Xtiloup et Brocent -->
+
+<script>
+ScrollReveal().reveal('.reveal',{
+    distance:'60px',
+    duration:1200,
+    easing:'ease-out',
+    origin:'bottom',
+    interval:120
+});
+
+function openModal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function closeModal(id) {
+  document.getElementById(id).style.display = "none";
+}
+</script>
+</body>
+</html>

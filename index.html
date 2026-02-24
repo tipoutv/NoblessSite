@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>BLD 444 — Lobby</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== VIDEO BACKGROUND ===== */
+
+#bg-video{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+object-fit:cover;
+z-index:-2;
+}
+
+.overlay{
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:-1;
+}
+
+/* ===== HEADER ===== */
+
+header{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+background:rgba(0,0,0,0.35);
+backdrop-filter:blur(15px);
+border-bottom:1px solid rgba(255,255,255,0.1);
+z-index:1000;
+}
+
+header h1{
+color:#ff0033;
+letter-spacing:3px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:500;
+transition:0.3s;
+position:relative;
+}
+
+nav a:hover{
+color:#ff0033;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+}
+
+.hero h2{
+font-size:70px;
+font-weight:900;
+letter-spacing:5px;
+text-shadow:0 0 25px #ff0033;
+}
+
+.hero p{
+margin-top:15px;
+opacity:0.8;
+font-size:20px;
+}
+
+.hero-btn{
+margin-top:40px;
+padding:15px 35px;
+background:#ff0033;
+border-radius:8px;
+text-decoration:none;
+color:white;
+font-weight:600;
+transition:0.3s;
+}
+
+.hero-btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 30px #ff0033;
+}
+
+/* ===== SECTIONS ===== */
+
+section{
+padding:120px 20px;
+max-width:1100px;
+margin:auto;
+text-align:center;
+}
+
+section h2{
+font-size:40px;
+margin-bottom:20px;
+color:#ff0033;
+}
+
+/* ===== VIDEO CARD ===== */
+
+.video-box{
+margin-top:30px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 0 40px rgba(255,0,51,0.3);
+}
+
+iframe{
+width:100%;
+height:500px;
+border:none;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+text-align:center;
+padding:40px;
+background:#0a0a0a;
+opacity:0.6;
+}
+
+/* ===== REVEAL ===== */
+
+.reveal{
+visibility:hidden;
+}
+
+</style>
+</head>
+
+<body>
+
+<video autoplay muted loop id="bg-video">
+<source src="video.mp4" type="video/mp4">
+</video>
+
+<div class="overlay"></div>
+
+<header>
+<h1>BLD 444</h1>
+
+<nav>
+<a href="index.html">Lobby</a>
+<a href="artistes.html">Artistes</a>
+<a href="merch.html">Merch</a>
+<a href="evenements.html">Événements</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<h2>BLD 444</h2>
+<p>Le collectif. La vision. Le mouvement.</p>
+
+<a href="artistes.html" class="hero-btn">
+Découvrir les artistes
+</a>
+</section>
+
+<!-- UNIVERS -->
+<section class="reveal">
+<h2>Notre univers</h2>
+<p>
+BLD 444 rassemble une nouvelle génération d’artistes.
+Musique, performance et identité unique.
+</p>
+</section>
+
+<!-- CLIP -->
+<section class="reveal">
+<h2>Dernier Clip</h2>
+
+<div class="video-box">
+<iframe src="https://www.youtube.com/embed/VIDEOID" allowfullscreen></iframe>
+</div>
+
+</section>
+
+<footer>
+© 2026 — BLD 444
+</footer>
+
+<script>
+
+/* ANIMATIONS SCROLL */
+ScrollReveal().reveal('.reveal',{
+distance:'60px',
+duration:1200,
+origin:'bottom',
+interval:200
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Événement - Concert Live</title>
+
+<style>
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#0d0d0d;
+  color:white;
+}
+
+/* ===== BOUTON LOBBY ===== */
+.back-btn{
+  position:fixed;
+  top:20px;
+  left:20px;
+  background:#ff0033;
+  color:white;
+  padding:12px 22px;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  z-index:9999;
+  transition:0.3s;
+}
+
+.back-btn:hover{
+  background:#cc0029;
+  transform:scale(1.05);
+}
+
+/* HERO */
+.hero{
+  height:80vh;
+  background:url("https://images.unsplash.com/photo-1501386761578-eac5c94b800a") center/cover;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:60px;
+  margin:0;
+}
+
+.hero p{
+  font-size:20px;
+  opacity:0.8;
+}
+
+/* SECTION */
+.section{
+  padding:60px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+
+/* BOUTON */
+.ticket-btn{
+  display:inline-block;
+  padding:15px 30px;
+  background:#ff0033;
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+.ticket-btn:hover{
+  background:#cc0029;
+  transform:scale(1.05);
+}
+
+/* COUNTDOWN */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  margin-top:30px;
+}
+
+.time-box{
+  background:#1a1a1a;
+  padding:20px;
+  border-radius:10px;
+  text-align:center;
+  min-width:80px;
+}
+
+.time-box h2{
+  margin:0;
+  font-size:32px;
+  color:#ff0033;
+}
+
+/* MAP */
+.map{
+  margin-top:40px;
+  border-radius:12px;
+  overflow:hidden;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#111;
+  margin-top:40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ✅ BOUTON RETOUR LOBBY -->
+<a href="index.html" class="back-btn">⬅ Lobby</a>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <h1>BLD 444 </h1>
+    <p>🔥 Concert officiel — Montréal</p>
+    <br>
+    <a class="ticket-btn" href="https://www.ticketmaster.ca/" target="_blank">
+      🎟️ Acheter un billet
+    </a>
+  </div>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="section" style="text-align:center;">
+  <h2>⏳ Début du concert dans :</h2>
+
+  <div class="countdown">
+    <div class="time-box">
+      <h2 id="days">0</h2>
+      <p>Jours</p>
+    </div>
+
+    <div class="time-box">
+      <h2 id="hours">0</h2>
+      <p>Heures</p>
+    </div>
+
+    <div class="time-box">
+      <h2 id="minutes">0</h2>
+      <p>Minutes</p>
+    </div>
+
+    <div class="time-box">
+      <h2 id="seconds">0</h2>
+      <p>Secondes</p>
+    </div>
+  </div>
+</div>
+
+<!-- INFOS -->
+<div class="section">
+  <h2>📍 Lieu de l'événement</h2>
+  <p>
+    Montréal<br>
+    Ouverture des portes : <br>
+    Show :
+  </p>
+
+  <div class="map">
+    <iframe
+      width="100%"
+      height="400"
+      frameborder="0"
+      style="border:0"
+      src="https://www.google.com/maps?q=Centre+Bell+Montreal&output=embed"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<footer>
+  © 2026 — BLD 444
+</footer>
+
+<script>
+
+/* DATE DU CONCERT (MODIFIE ICI) */
+const eventDate = new Date("").getTime();
+
+const countdown = setInterval(function(){
+
+  const now = new Date().getTime();
+  const distance = eventDate - now;
+
+  const days = Math.floor(distance / (1000*60*60*24));
+  const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+  document.getElementById("days").innerHTML = days;
+  document.getElementById("hours").innerHTML = hours;
+  document.getElementById("minutes").innerHTML = minutes;
+  document.getElementById("seconds").innerHTML = seconds;
+
+  if(distance < 0){
+    clearInterval(countdown);
+    document.querySelector(".countdown").innerHTML =
+      "<h2>🔥 Le concert a commencé !</h2>";
+  }
+
+},1000);
+
+</script>
+
+</body>
+</html>
