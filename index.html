@@ -11,8 +11,7 @@
 
 <style>
 
-/* ===== RESET ===== */
-
+/* RESET */
 *{
 margin:0;
 padding:0;
@@ -26,8 +25,7 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ===== VIDEO BACKGROUND ===== */
-
+/* VIDEO BACKGROUND */
 #bg-video{
 position:fixed;
 top:0;
@@ -36,46 +34,40 @@ width:100%;
 height:100%;
 object-fit:cover;
 z-index:-2;
+pointer-events:none;
 }
 
 .overlay{
 position:fixed;
 width:100%;
 height:100%;
-background:linear-gradient(
-to bottom,
-rgba(0,0,0,0.4),
-rgba(0,0,0,0.85)
-);
+background:linear-gradient(to bottom,rgba(0,0,0,.4),rgba(0,0,0,.9));
 z-index:-1;
 }
 
-/* ===== MENU CINEMATIC ===== */
-
+/* MENU */
 header{
 position:fixed;
 top:0;
 width:100%;
 display:flex;
 justify-content:center;
-align-items:center;
 padding:22px;
-background:rgba(0,0,0,0.2);
+background:rgba(0,0,0,.25);
 backdrop-filter:blur(18px);
 transition:.4s;
 z-index:1000;
 }
 
 header.scrolled{
-background:rgba(0,0,0,0.9);
-box-shadow:0 0 30px rgba(255,0,60,0.3);
+background:rgba(0,0,0,.9);
+box-shadow:0 0 25px rgba(255,0,51,.3);
 }
 
 nav a{
 color:white;
 text-decoration:none;
 margin:0 28px;
-font-weight:500;
 letter-spacing:2px;
 position:relative;
 transition:.3s;
@@ -100,8 +92,7 @@ nav a:hover::after{
 width:100%;
 }
 
-/* ===== HERO ===== */
-
+/* HERO */
 .hero{
 height:100vh;
 display:flex;
@@ -111,14 +102,12 @@ align-items:center;
 text-align:center;
 }
 
-/* TITRE CINEMA */
 .hero h1{
 font-size:90px;
 font-weight:900;
 letter-spacing:8px;
-text-transform:uppercase;
+text-shadow:0 0 35px rgba(255,0,60,.7);
 animation:fadeUp 1.5s ease forwards;
-text-shadow:0 0 35px rgba(255,0,60,0.7);
 }
 
 .hero p{
@@ -137,7 +126,6 @@ border-radius:8px;
 text-decoration:none;
 color:white;
 font-weight:600;
-letter-spacing:2px;
 transition:.3s;
 }
 
@@ -146,8 +134,7 @@ transform:scale(1.1);
 box-shadow:0 0 40px #ff0033;
 }
 
-/* ===== SECTIONS ===== */
-
+/* SECTIONS */
 section{
 padding:140px 25px;
 max-width:1100px;
@@ -164,16 +151,16 @@ color:#ff0033;
 .card{
 margin-top:40px;
 padding:40px;
-background:rgba(255,255,255,0.05);
+background:rgba(255,255,255,.05);
 border-radius:18px;
 backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,.08);
 transition:.4s;
 }
 
 .card:hover{
 transform:translateY(-10px);
-box-shadow:0 0 40px rgba(255,0,60,0.25);
+box-shadow:0 0 40px rgba(255,0,60,.25);
 }
 
 iframe{
@@ -183,8 +170,7 @@ border:none;
 border-radius:15px;
 }
 
-/* ===== FOOTER ===== */
-
+/* FOOTER */
 footer{
 text-align:center;
 padding:50px;
@@ -192,22 +178,69 @@ background:#050505;
 opacity:.6;
 }
 
-/* ===== ANIMATION ===== */
+/* CHATBOT */
+#chat-toggle{
+position:fixed;
+bottom:25px;
+right:25px;
+background:#ff0033;
+border:none;
+color:white;
+font-size:22px;
+width:60px;
+height:60px;
+border-radius:50%;
+cursor:pointer;
+box-shadow:0 0 20px #ff0033;
+z-index:2000;
+}
 
+#chatbot{
+position:fixed;
+bottom:100px;
+right:25px;
+width:300px;
+background:#0a0a0a;
+border-radius:15px;
+overflow:hidden;
+display:none;
+flex-direction:column;
+box-shadow:0 0 30px rgba(255,0,51,.4);
+z-index:2000;
+}
+
+#chat-header{
+background:#ff0033;
+padding:12px;
+font-weight:bold;
+text-align:center;
+}
+
+#chat-messages{
+height:250px;
+overflow-y:auto;
+padding:10px;
+font-size:14px;
+}
+
+.bot{color:#ff4d6d;margin-bottom:8px;}
+.user{text-align:right;margin-bottom:8px;}
+
+#chat-input{
+border:none;
+padding:12px;
+outline:none;
+background:#111;
+color:white;
+}
+
+/* ANIMATION */
 @keyframes fadeUp{
-from{
-opacity:0;
-transform:translateY(40px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0;transform:translateY(40px);}
+to{opacity:1;transform:translateY(0);}
 }
 
-.reveal{
-visibility:hidden;
-}
+.reveal{visibility:hidden;}
 
 </style>
 </head>
@@ -216,7 +249,7 @@ visibility:hidden;
 
 <!-- VIDEO -->
 <video autoplay muted loop playsinline preload="auto" id="bg-video">
-    <source src="bld 444.mp4" type="video/mp4">
+<source src="video.mp4" type="video/mp4">
 </video>
 
 <div class="overlay"></div>
@@ -224,10 +257,10 @@ visibility:hidden;
 <!-- MENU -->
 <header id="header">
 <nav>
-<a href="index.html">Lobby</a>
-<a href="artistes.html">Artistes</a>
-<a href="merch.html">Merch</a>
-<a href="evenements.html">Événements</a>
+<a href="#">Lobby</a>
+<a href="#">Artistes</a>
+<a href="#">Merch</a>
+<a href="#">Événements</a>
 </nav>
 </header>
 
@@ -235,45 +268,43 @@ visibility:hidden;
 <section class="hero">
 <h1>BLD 444</h1>
 <p>Le collectif • La vision • Le mouvement</p>
-
-<a href="artistes.html" class="hero-btn">Entrer dans l’univers</a>
+<a href="#" class="hero-btn">Entrer dans l’univers</a>
 </section>
 
 <!-- UNIVERS -->
 <section class="reveal">
 <h2>Notre Univers</h2>
-
 <div class="card">
-<p>
-BLD 444 représente une nouvelle génération.
-Un son. Une identité. Une énergie brute.
-Plus qu’un collectif — un mouvement.
-</p>
+BLD 444 représente une nouvelle génération artistique.
+Un mouvement, une énergie, une identité.
 </div>
-
 </section>
 
 <!-- CLIP -->
 <section class="reveal">
 <h2>Dernier Clip</h2>
-
-<iframe
-src="https://www.youtube.com/embed/1rI1_mk_byc"
-allowfullscreen>
-</iframe>
-
+<iframe src="https://www.youtube.com/embed/1rI1_mk_byc" allowfullscreen></iframe>
 </section>
 
-<footer>
-© 2026 — BLD 444
-</footer>
+<footer>© 2026 — BLD 444</footer>
+
+<!-- CHATBOT -->
+<div id="chatbot">
+<div id="chat-header">BLD 444 Assistant</div>
+<div id="chat-messages">
+<p class="bot">🔥 Bienvenue sur BLD 444.</p>
+</div>
+<input type="text" id="chat-input" placeholder="Écris ici..." />
+</div>
+
+<button id="chat-toggle">💬</button>
 
 <script>
 
-/* MENU SCROLL EFFECT */
+/* MENU SCROLL */
 window.addEventListener("scroll",()=>{
-const header=document.getElementById("header");
-header.classList.toggle("scrolled",window.scrollY>60);
+document.getElementById("header")
+.classList.toggle("scrolled",window.scrollY>60);
 });
 
 /* SCROLL ANIMATION */
@@ -282,6 +313,38 @@ distance:'70px',
 duration:1400,
 origin:'bottom',
 interval:200
+});
+
+/* CHATBOT */
+const toggle=document.getElementById("chat-toggle");
+const chatbot=document.getElementById("chatbot");
+const input=document.getElementById("chat-input");
+const messages=document.getElementById("chat-messages");
+
+toggle.onclick=()=>{
+chatbot.style.display=
+chatbot.style.display==="flex"?"none":"flex";
+};
+
+input.addEventListener("keypress",function(e){
+if(e.key==="Enter"){
+let userText=input.value;
+messages.innerHTML+=`<p class="user">${userText}</p>`;
+let reply="Je n'ai pas compris.";
+
+if(userText.toLowerCase().includes("artiste"))
+reply="🔥 Va voir la section Artistes.";
+
+if(userText.toLowerCase().includes("merch"))
+reply="🛒 Le merch arrive bientôt.";
+
+if(userText.toLowerCase().includes("contact"))
+reply="📩 Instagram : @bld444";
+
+messages.innerHTML+=`<p class="bot">${reply}</p>`;
+input.value="";
+messages.scrollTop=messages.scrollHeight;
+}
 });
 
 </script>
